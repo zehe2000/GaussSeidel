@@ -13,7 +13,7 @@ git clone https://github.com/your-username/Gauss-Seidel-Solver.git
 ```
 
 
-Files
+## Files
 main.py: The main entry point for the program, handling command-line arguments and coordinating other modules.
 
 readEquation.py: Contains methods to read and validate the system of equations from a text file.
@@ -25,7 +25,7 @@ GaussSeidelAlgorithm.py: Implements the Gauss-Seidel algorithm.
 testGauss.py: Unit tests for GaussSeidelAlgorithm.py.
 
 
-Usage
+## Usage
 Navigate to the project directory and run the following command:
 python main.py <path_to_equation_file> -t <tolerance_level> -i <max_iterations>
 
@@ -35,11 +35,11 @@ tolerance_level: (Optional) Tolerance level for Gauss-Seidel. Default is 1e-7.
 
 max_iterations: (Optional) Maximum number of iterations for Gauss-Seidel. Default is 10000.
 
-Example
+## Example
 python main.py equations.txt -t 0.00001 -i 5000
 This will read the system of equations from equations.txt, solve it using Gauss-Seidel with a tolerance of 0.00001, and perform a maximum of 5000 iterations.
 
-Testing
+## Testing
 To run the tests for reading equations:
 python -m unittest testReadEquation.py
 To run the tests for Gauss-Seidel algorithm:
