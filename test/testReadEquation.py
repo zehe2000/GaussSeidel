@@ -46,6 +46,18 @@ class testReadEquation(unittest.TestCase):
         with self.assertRaises(ValueError):
             convertContentToArray(content)
 
+    def testUnderDeterminedEquations (self):
+        content = readfile('C:\\Users\\Admin\\Desktop\\uds zeinab\\eigene '
+                           'Projekte\\Gauß-Seidel\\test\\brokenTxt\\UnderDeterminedMatrix.txt')
+        with self.assertRaises(ValueError):
+            convertContentToArray(content)
+
+    def testOverDeterminedEquations(self):
+        content = readfile('C:\\Users\\Admin\\Desktop\\uds zeinab\\eigene '
+                           'Projekte\\Gauß-Seidel\\test\\brokenTxt\\OverDeterminedMatrix.txt')
+        with self.assertRaises(ValueError):
+            convertContentToArray(content)
+
 
 
 
