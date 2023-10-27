@@ -1,16 +1,30 @@
-# This is a sample Python script.
+import argparse
+from readEquation import *
+from GaussSeidelAlgorithm import *
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    # Initialize argparse
+    parser = argparse.ArgumentParser(
+        description="Solve equations using Gauss-Seidel method.")
+    parser.add_argument("file_path",
+                        help="Path to the TXT file containing the equations")
+    parser.add_argument("-t", "--tolerance", type=float, default=0.0000001,
+                        help="Tolerance level for Gauss-Seidel")
+    parser.add_argument("-i", "--max_iter", type=int, default=10000,
+                        help="Maximum number of iterations for Gauss-Seidel")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Read the equation from file
+    equation = readfile(args.file_path)
+
+    # Convert the equation to an array
+    matrix, vector = convertContentToArray(equation)
+
+    # Apply Gauss-Seidel method and print the result
+    result = gaussSeidel(matrix, vector, args.tolerance, args.max_iter)
+
+    file = open("output.txt", "x")
+    file.write("Solution: " + str(result))
+    print(f"The result is {result}")
