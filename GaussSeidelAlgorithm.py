@@ -1,29 +1,24 @@
 import numpy as np
-from readEquation import *
 
-def sum (k, end, matrix, value):
-    res = 0
-    for i in range(1, end):
-        res+=matrix[k][i]* value
+def gaussSeidel(matrix, vector, approx_error, iterationLimit):
+    x1 = np.zeros_like(vector, dtype=float)
 
-    return res
+    for count in range(1, iterationLimit):
+        x2 = np.zeros_like(x1, dtype=float)
 
+        for k in range(matrix.shape[0]):
+            prod1 = np.dot(matrix[k, :k], x2[:k])
+            prod2 = np.dot(matrix[k, k+1:], x1[k+1:])
+            if matrix[k, k] == 0:
+                raise ValueError("Division by zero")
+            x2[k] = (vector[k] - prod1 - prod2) / matrix[k, k]
 
-def gaussSeidel(file_path, approx_error):
-    matrix, vector = convertContentToArray(readfile(file_path))
+        if np.allclose(x1, x2, rtol=approx_error):
+            break
 
-    error=0
-    n=matrix.size[0]
-    result=[]
+        x1 = x2
 
-    while error < approx_error:
-
-        for k in range(1, n):
-            result[k]= (1/matrix[k][k])*(vector[k]-sum(k, n, matrix, )-sum(
-                k,n,matrix,))
-
-
-
+    return x1
 
 
 
