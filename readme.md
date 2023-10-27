@@ -1,66 +1,36 @@
-Gauss-Seidel Solver Project README
-Overview
-This project aims to provide a Python-based solution to linear systems of equations using the Gauss-Seidel method. The project is organized into five primary Python files that each serve specific functions:
+# Gauss-Seidel Solver
 
-main.py: Executes the core functionality and serves as the entry point to the application.
-readEquation.py: Reads and validates the system of equations from a text file.
-testReadEquation.py: Contains unit tests for readEquation.py.
-GaussSeidelAlgorithm.py: Implements the Gauss-Seidel algorithm to solve equations.
-testGauss.py: Contains unit tests for GaussSeidelAlgorithm.py.
-How to Use
-To run the main program, use the following command:
+## Description
 
-bash
-Copy code
-python main.py <file_path> [-t <tolerance>] [-i <max_iter>]
-file_path: Path to the text file containing the system of equations.
--t, --tolerance: Tolerance level for the Gauss-Seidel method (optional, default is 1e-7).
--i, --max_iter: Maximum number of iterations for the Gauss-Seidel method (optional, default is 10000).
+This project aims to solve a system of linear equations using the Gauss-Seidel method. The equations are read from a text file and the solution is printed to the console as well as saved to an `output.txt` file.
+
+## Installation
+
+Clone the repository to your local machine.
+
+```bash
+git clone https://github.com/your-username/Gauss-Seidel-Solver.git
+Files
+main.py: The main entry point for the program, handling command-line arguments and coordinating other modules.
+readEquation.py: Contains methods to read and validate the system of equations from a text file.
+testReadEquation.py: Unit tests for readEquation.py.
+GaussSeidelAlgorithm.py: Implements the Gauss-Seidel algorithm.
+testGauss.py: Unit tests for GaussSeidelAlgorithm.py.
+Usage
+Navigate to the project directory and run the following command:
+python main.py <path_to_equation_file> -t <tolerance_level> -i <max_iterations>
+path_to_equation_file: Path to the TXT file containing the equations.
+tolerance_level: (Optional) Tolerance level for Gauss-Seidel. Default is 1e-7.
+max_iterations: (Optional) Maximum number of iterations for Gauss-Seidel. Default is 10000.
 Example
-bash
-Copy code
-python main.py equations.txt -t 1e-7 -i 10000
-Files Description
-main.py
-The main program that glues everything together. It uses argparse for command-line argument parsing. It reads the equation file, validates it, applies the Gauss-Seidel method, and prints the result. It also saves the output to output.txt.
-
-readEquation.py
-This file has two main functions:
-
-readfile(file_path): Reads the content of the file from the given path.
-convertContentToArray(content): Validates and converts the read content to a NumPy array.
-The file must contain sections prefixed by A: and b: to specify the matrix and the vector, respectively.
-
-testReadEquation.py
-Contains a series of unit tests that test various aspects of the readEquation.py file, such as whether the equations are overdetermined, underdetermined, or if the file format is wrong.
-
-GaussSeidelAlgorithm.py
-Contains the gaussSeidel function, which takes a matrix, a vector, a tolerance level, and a maximum iteration count as arguments. It returns the solution to the equation using the Gauss-Seidel method.
-
-testGauss.py
-Includes unit tests that check the functionality of the GaussSeidelAlgorithm.py. It uses NumPy's testing framework for array comparisons.
-
-Dependencies
-Python 3.9.13
-NumPy
-
-
-
-bash
-Copy code
-pip install numpy
-Run the program as described in the "How to Use" section.
-
+python main.py equations.txt -t 0.00001 -i 5000
+This will read the system of equations from equations.txt, solve it using Gauss-Seidel with a tolerance of 0.00001, and perform a maximum of 5000 iterations.
 Testing
-To run tests, execute:
-
-bash
-Copy code
+To run the tests for reading equations:
 python -m unittest testReadEquation.py
+To run the tests for Gauss-Seidel algorithm:
 python -m unittest testGauss.py
 License
-This project is licensed under the MIT License. See the LICENSE.md file for details.
+This project is licensed under the MIT License.
 
-Authors
-[Zeinab Herz]
-Feel free to reach out for any issues or contributions.
+Feel free to customize the content according to your project's needs!
