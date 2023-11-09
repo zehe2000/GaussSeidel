@@ -2,7 +2,7 @@
 
 ## Description
 
-This project aims to solve a system of linear equations using the Gauss-Seidel method. The equations are read from a text file and the solution is printed to the console as well as saved to an `output.txt` file.
+This project provides a solver for systems of linear equations based on the Gauss-Seidel algorithm. The equations are read from a text file and the solution is printed to the console as well as saved to an `output.txt` file.
 
 ## Installation
 
